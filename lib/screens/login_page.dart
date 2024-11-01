@@ -60,7 +60,6 @@ class _LoginPageState extends State<LoginPage> {
         .get();
 
     return querySnapshot.docs.isNotEmpty;
-
   }
 
   Future<void> addToFirestore({
@@ -87,18 +86,14 @@ class _LoginPageState extends State<LoginPage> {
       'docId': documentId,
       'photoURL': photoURL,
       'fcmToken': fcmToken,
-
     });
     print('Document ID: $documentId');
-
   }
 
   void _retrieveFCMToken() async {
     fcmToken = await FirebaseMessaging.instance.getToken();
     print('FCM Token: $fcmToken');
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(
-              height: 40,
+              height: 40.00,
             ),
             SizedBox(
               height: 75,
@@ -184,6 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                     fontFamily: 'Pattaya',
                   ),
+                  //asdfghj
                   textAlign: TextAlign.center,
                   inputFormatters: [LengthLimitingTextInputFormatter(10)],
                   decoration: InputDecoration(
@@ -206,10 +202,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 50,
               width: 275,
               child: ElevatedButton(
-                onPressed: _isLoading
-                    ? null
-                    : () async {
-                      },
+                onPressed: _isLoading ? null : () async {},
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(
                     Colors.indigo.shade400,
@@ -272,16 +265,17 @@ class _LoginPageState extends State<LoginPage> {
                         await signInWithGoogle();
                         setState(() {
                           _isGoogleLoading = false;
-                        });if (context.mounted) {
+                        });
+                        if (context.mounted) {
                           await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(
-                              index: 0,
-                              content: '',
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(
+                                index: 0,
+                                content: '',
+                              ),
                             ),
-                          ),
-                        );
+                          );
                         }
                       },
                 style: ButtonStyle(
@@ -308,6 +302,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(
                             width: 10,
+                          ),
+                          BuildTextWidget(
+                            text: 'Sign in with Google',
+                            style: TextStyle(
+                              color: Colors.indigo.shade400,
+                              fontFamily: 'Pattaya',
+                            ),
                           ),
                           BuildTextWidget(
                             text: 'Sign in with Google',
